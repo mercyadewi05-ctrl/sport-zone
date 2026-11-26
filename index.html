@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportZone - Reservasi Lapangan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <h2 class="logo"><img src="Logo.png" alt="Logo" width="90" height="70" align="center"> SportZone</h2>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#lapangan">Lapangan</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+
+            <a href="#pemesanan" class="btn">Pesan Sekarang</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <h1>Main Lebih Seru<br>
+                di <span>SportZone!</span>
+            </h1>
+
+            <p>Futsal & Badminton dengan<br>
+               Fasilitas Terbaik</p>
+
+            <a href="#lapangan" class="btn">
+                Pesan Sekarang →
+            </a>
+        </div>
+    </section>
+
+    <!-- Konten -->
+    <main class="container">
+
+        <!-- Daftar Lapangan -->
+        <section class="lapangan" id="lapangan">
+            <h2>Daftar Lapangan</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <img src="Lapngan A.png" alt="Lapangan Futsal A">
+                    <h3>Futsal A</h3>
+                    <p>Rp100.000 / Jam</p>
+                    <a href="#pemesanan" class="btn">
+                        Pesan Sekarang
+                    </a>
+                </div>
+
+                <div class="card">
+                    <img src="Lapangan B.png" alt="Lapangan Futsal B">
+                    <h3>Futsal B</h3>
+                    <p>Rp120.000 / Jam</p>
+                    <a href="#pemesanan" class="btn">
+                        Pesan Sekarang
+                    </a>
+                </div>
+
+                <div class="card">
+                    <img src="Lapangan Badminton.png" alt="Lapangan Badminton">
+                    <h3>Badminton</h3>
+                    <p>Rp80.000 / Jam</p>
+                    <a href="#pemesanan" class="btn">
+                        Pesan Sekarang
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Form Pemesanan -->
+        <section class="pemesanan" id="pemesanan">
+            <h2>Form Pemesanan</h2>
+
+            <form>
+                <label>Nama Pelanggan</label>
+                <input type="text" placeholder="Masukkan nama" required>
+
+                <label>No. WhatsApp</label>
+                <input type="tel" placeholder="Masukkan nomor WhatsApp" required>
+
+                <label>Tanggal</label>
+                <input type="date" required>
+
+                <label>Pilih Lapangan</label>
+                <select id="lapangan-pilih" required>
+                    <option value="Futsal A">Futsal A</option>
+                    <option value="Futsal B">Futsal B</option>
+                    <option value="Badminton">Badminton</option>
+                </select>
+
+                <label>Durasi (Jam)</label>
+                <select required>
+                    <option>2 Jam</option>
+                    <option>3 Jam</option>
+                    <option>4 Jam</option>
+                </select>
+
+                <button type="button" class="hitung">
+                    Hitung Biaya
+                </button>
+
+                <div id="hasil"></div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="kontak">
+        <h3>SportZone</h3>
+        <p>Tempat terbaik untuk bermain dan berolahraga.</p>
+        <p>© 2026 SportZone. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const tombol = document.querySelector(".hitung");
+
+        tombol.addEventListener("click", function() {
+            const lapangan = document.getElementById("lapangan-pilih").value;
+            const durasi = document.querySelectorAll("select")[1].value;
+
+            const harga = {
+                "Futsal A": 100000,
+                "Futsal B": 120000,
+                "Badminton": 80000
+            };
+
+            if (!lapangan || !durasi) {
+                alert("Silakan pilih lapangan dan durasi!");
+                return;
+            }
+
+            const total = harga[lapangan] * parseInt(durasi);
+
+            document.getElementById("hasil").innerHTML =
+                "Total Biaya: Rp" + total.toLocaleString("id-ID");
+        });
+    </script>
+<script src="script.js"></script>
+</body>
+</html>
